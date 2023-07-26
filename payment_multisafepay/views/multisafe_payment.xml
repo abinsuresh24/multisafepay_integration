@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--    Multisafepay Provider Form view -->
+    <record id="payment_provider_form" model="ir.ui.view">
+        <field name="name">payment.provider.view.form.inherit.payment.multisafepay</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position="inside">
+                <group attrs="{'invisible': [('code', '!=', 'multisafepay')]}">
+                    <field name="multisafepay_website_key" string="API Key"
+                           attrs="{'required':[ ('code', '=', 'multisafepay'), ('state', '!=', 'disabled')]}"
+                           password="True"/>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>
